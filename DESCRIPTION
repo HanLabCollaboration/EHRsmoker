@@ -1,0 +1,16 @@
+Package: EHRsmoker
+Type: Package
+Title: Improving Electronic Health Records (EHR) Smoking History Data 
+    Through Rule-based Record and Longitudinal Level Correction and Smoothing
+Version: 1.0.0
+Authors: Mengrui Zhang, Ingrid Luo, Gu Bo, Summer Han
+Description: Improving Electronic Health Records (EHR) Smoking History Data 
+    Through Rule-based Record and Longitudinal Level Correction and Smoothing
+License: MIT license
+Encoding: UTF-8
+LazyData: true
+Depends:
+  pbapply,
+  lubridate,
+  tidyr
+RoxygenNote: 7.3.2
