@@ -167,6 +167,7 @@ gra <- heatmap_status(data_list, patients, cluster_rows = FALSE, cluster_columns
                       show_row_names = TRUE, show_column_names = TRUE)
 gra
 ```
+<img width="682" height="482" alt="Screenshot 2025-08-02 at 9 18 03 PM" src="https://github.com/user-attachments/assets/cd8f6644-cde8-4405-87d2-6de1b1e71fe5" />
 
 After the Correction: 
 ```{r}
@@ -180,8 +181,7 @@ gra <- heatmap_status(correct_list, patients, cluster_rows = FALSE, cluster_colu
                       show_row_names = TRUE, show_column_names = TRUE)
 gra
 ```
-
-
+<img width="684" height="475" alt="Screenshot 2025-08-02 at 9 18 22 PM" src="https://github.com/user-attachments/assets/76d834ff-e8cb-43eb-8489-a0596f3ba294" />
 
 Line plot (Before Correction):
 ```{r}
