@@ -7,4 +7,14 @@ The algorithm identifies and corrects inconsistencies in structured smoking reco
 ## Preparing R Library
 Load required libraries
 
+```{r}
+suppressMessages(library(ggplot2))
+suppressMessages(library(tidyr))
+suppressMessages(library(dplyr))
+suppressMessages(library(lubridate))
+suppressMessages(library(ComplexHeatmap))
+suppressMessages(library(circlize))
+suppressMessages(library(pbapply))
+suppressMessages(library(purrr))
+```
 
