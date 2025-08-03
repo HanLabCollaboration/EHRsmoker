@@ -14,13 +14,13 @@ install_github("HanLabCollaboration/EHRsmoker", force = TRUE)
 Load required libraries
 
 ```{r}
-suppressMessages(library(ggplot2))
-suppressMessages(library(tidyr))
-suppressMessages(library(dplyr))
-suppressMessages(library(lubridate))
-suppressMessages(library(ComplexHeatmap))
-suppressMessages(library(circlize))
-suppressMessages(library(pbapply))
-suppressMessages(library(purrr))
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(lubridate)
+library(ComplexHeatmap)
+library(circlize)
+library(pbapply)
+library(purrr)
 ```
 
