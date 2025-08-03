@@ -101,6 +101,101 @@ data[1:10, ]
 ```
 <img width="930" height="238" alt="Screenshot 2025-08-02 at 9 13 24 PM" src="https://github.com/user-attachments/assets/fa905ac0-0fdf-4ed3-bb2e-a921c44f43f2" />
 
+### Step2: Record-level smoking status inconsistency
+
+In this step, we will identify the inconsistency in record-level for smoking status. Correction will be also be made. 
+
+```{r}
+correct_list <- record_smoking(data_list, quit_date = "quit_date",
+                            note_date = "note_date", percent = 0.1)
+```
+
+percent: In one patient, the minimum percent of non-zero records of quantitative variables (e.g. pack-years or pack-days). 
+
+First 10 rows of one patient example (After Correction). 
+```{r}
+data <- correct_list[["ID227943"]]
+data[1:10, ]
+```
+<img width="932" height="241" alt="Screenshot 2025-08-02 at 9 14 23 PM" src="https://github.com/user-attachments/assets/5e62fac9-d576-4655-8905-c14a8b9d2121" />
+
+### Step3: Longitudinal-level smoking status inconsistency
+
+This step identify the inconsistency in longitudinal-level across different records. Making the longitudinal changes in smoking status are all correct. Incorrect smoking status changes are:
+
+1. Current smoker to Never smoker
+2. Former smoker to Never smoker
+
+All other changes are considered as plausible changes. 
+
+```{r}
+correct_list <- longitudinal_smoking(correct_list, percent = 0.25)
+```
+
+percent: In one patient, the minimum percent of Former records of smoking status to be consider validate. 
+First 10 rows of one patient example (After Correction). 
+```{r}
+data <- correct_list[["ID227943"]]
+data[1:10, ]
+```
+<img width="926" height="240" alt="Screenshot 2025-08-02 at 9 15 09 PM" src="https://github.com/user-attachments/assets/f142d797-0e80-4974-9f5a-7b28f66acc14" />
+
+## Step4: Longitudinal-level quantitative (pack-years/pack-days) inconsistency
+After processing smoking status, here we smooth the quantitative variables in the dataset. 
+
+```{r}
+correct_list <- longitudinal_packs(correct_list, cluster_col = "inconsistent")
+```
+The function will return back smoothed quantitative variables for pack-years and pack-days. 
+
+### Step5: Visulization and Validation
+
+The package provide two types of visualization. 
+1. With patient line plots for multiple variables (columns). 
+2. Across patient heat map plots for smoking status.
+
+Heat Map:
+Before the Correction: 
+```{r}
+patients <- c("ID100764", "ID116326", "ID132413", "ID148109", "ID160894", 
+              "ID206040", "ID213798", "ID226331", "ID227943", "ID232723", 
+              "ID234792", "ID237480", "ID249829", "ID271218", "ID301459", 
+              "ID302546", "ID31489", "ID351731", "ID719876", "ID733648", 
+              "ID775389", "ID782713", "ID81615")
+
+gra <- heatmap_status(data_list, patients, cluster_rows = FALSE, cluster_columns = FALSE, 
+                      show_row_names = TRUE, show_column_names = TRUE)
+gra
+```
+
+After the Correction: 
+```{r}
+patients <- c("ID100764", "ID116326", "ID132413", "ID148109", "ID160894", 
+              "ID206040", "ID213798", "ID226331", "ID227943", "ID232723", 
+              "ID234792", "ID237480", "ID249829", "ID271218", "ID301459", 
+              "ID302546", "ID31489", "ID351731", "ID719876", "ID733648", 
+              "ID775389", "ID782713", "ID81615")
+
+gra <- heatmap_status(correct_list, patients, cluster_rows = FALSE, cluster_columns = FALSE, 
+                      show_row_names = TRUE, show_column_names = TRUE)
+gra
+```
+
+
+
+Line plot (Before Correction):
+```{r}
+gra <- scatter_plot(data_list, patient = "ID148567", variable = "pack_years")
+gra
+```
+<img width="682" height="484" alt="Screenshot 2025-08-02 at 9 15 56 PM" src="https://github.com/user-attachments/assets/755b22be-eac0-445b-9133-e1ce93729143" />
+
+Line plot (After Correction):
+```{r}
+gra <- scatter_plot(correct_list, patient = "ID148567", variable = "pack_years")
+gra
+```
+<img width="674" height="483" alt="Screenshot 2025-08-02 at 9 16 29 PM" src="https://github.com/user-attachments/assets/14501b86-a8b1-4b3e-b8a3-d64f40988427" />
 
 
 
