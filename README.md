@@ -10,17 +10,19 @@ library(remotes)
 install_github("HanLabCollaboration/EHRsmoker", force = TRUE)
 ```
 
+## Optional: Install other packages if it is not installed
+ComplexHeatmap from Bioconnductor
+
+
 ## Loading EHRsmoker and other R packages
 Load required libraries
 
 ```{r}
 library(ggplot2)
-library(tidyr)
-library(dplyr)
+library(tidyverse)
 library(lubridate)
-library(ComplexHeatmap)
-library(circlize)
 library(pbapply)
-library(purrr)
+library(ComplexHeatmap)
+library(EHRsmoker)
 ```
 
