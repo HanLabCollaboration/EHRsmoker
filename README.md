@@ -99,6 +99,9 @@ First 10 rows of one patient example.
 data <- data_list[["ID227943"]]
 data[1:10, ]
 ```
+<img width="930" height="238" alt="Screenshot 2025-08-02 at 9 13 24 PM" src="https://github.com/user-attachments/assets/fa905ac0-0fdf-4ed3-bb2e-a921c44f43f2" />
+
+
 
 
 
