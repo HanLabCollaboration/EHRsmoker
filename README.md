@@ -10,9 +10,22 @@ library(remotes)
 install_github("HanLabCollaboration/EHRsmoker", force = TRUE)
 ```
 
-## Optional: Install other packages if it is not installed
+## (Optional): Install other packages if it is not installed
 ComplexHeatmap from Bioconnductor
-
+```{r}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("ComplexHeatmap")
+```
+Other package from CRAN
+```{r}
+packages_to_install <- c("ggplot2", "tidyverse", "lubridate", "pbapply")
+for (pkg in packages_to_install) {
+    if (!require(pkg, character.only = TRUE)) {
+        install.packages(pkg)
+    }
+}
+```
 
 ## Loading EHRsmoker and other R packages
 Load required libraries
